@@ -1,0 +1,62 @@
+<div>
+  Current Date: {{currentDate| date:'yyyy/MM/dd'}}
+  <BR>
+
+  <table border="0">
+    <tr>
+      <td align="center">
+
+        <!-- WeekOfDay of Calendar -->
+        <table>
+          <tr>
+            <td>
+              <input type="button" value="＜" style="font-size:1.0em;" (click)="leftButton_Click()">
+            </td>
+            <td>
+              <input type="button" value="Today" style="font-size:1.0em;width:100%;" (click)="todayButton_Click()">
+
+            </td>
+            <td>
+              <input type="button" value="＞" style="font-size:1.0em;" (click)="rightButton_Click()">
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td style="text-align: center">
+              <label style="font-size:1.5em;">{{currentDateString}}</label>
+            </td>
+            <td></td>
+          </tr>
+        </table>
+
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:center;">
+
+        <!-- Day of Calendar -->
+        <table border="1" #mainCalendar>
+          <tr>
+            <th *ngFor="let c of columnNames" style="font-size:2.0em;">{{c}}</th>
+          </tr>
+          <tr *ngFor="let y of rowNumbers">
+            <td *ngFor="let d of cells.slice(y*7+0,y*7+7)" style="text-align:center;width: 5.0em;">
+
+              <app-day-cell [currentMonth]="currentDate" [currentDate]="d" [activeDate]="activeDate" #cellList>
+                <div style="text-align: left">
+                  <label>{{specialDayRender(d)}}</label>
+                </div>
+              </app-day-cell>
+            </td>
+          </tr>
+        </table>
+
+      </td>
+    </tr>
+  </table>
+
+
+
+
+
+</div>

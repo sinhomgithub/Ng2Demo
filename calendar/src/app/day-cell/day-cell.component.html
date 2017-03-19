@@ -1,0 +1,8 @@
+<div  [class.holiday]="isHoliday"
+      [class.activeDay]="isActiveDay"
+      [class.otherMonthDay]="!isMonthDay">
+  <label style="font-size:2.0em;">{{currentDate.getDate()}}</label>
+
+  <!-- Parent Content -->
+  <ng-content></ng-content>
+</div>
